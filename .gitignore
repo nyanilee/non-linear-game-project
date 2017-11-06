@@ -94,3 +94,5 @@ PrjLog.txt
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
+
+UnityLockfile   
