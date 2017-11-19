@@ -48,6 +48,8 @@
         /// </summary>
         private readonly Transform transform;
 
+        private readonly Rigidbody rigidBody;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="PlayerMovementHandler" /> class.
         /// </summary>
@@ -67,6 +69,7 @@
             this.movementSpeed = movementSettings.Speed;
             this.raycastLayer = movementSettings.RaycastLayer;
             this.transform = componentSettings.Transform;
+            this.rigidBody = componentSettings.RigidBody;
             this.observers = new LinkedList<IDisposable>();
         }
 
@@ -160,7 +163,7 @@
                                 hit.point.z),
                             speedMulti * Time.deltaTime);
                         if (Vector3.Distance(hit.point, this.transform.position)
-                                <= 0.01) {
+                                <= 0.01f) {
                             this.DisposeObservers();
                         }
                     }));

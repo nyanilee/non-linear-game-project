@@ -7,9 +7,7 @@
     using System.Linq;
     using System.Xml;
 
-    using ButtonClickHandler;
-
-    using Handlers.Scrapbook;
+    using Buttons;
 
     using log4net;
 

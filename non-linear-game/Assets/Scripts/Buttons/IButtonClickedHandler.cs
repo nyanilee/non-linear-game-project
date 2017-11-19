@@ -1,4 +1,4 @@
-﻿namespace ButtonClickHandler {
+﻿namespace Buttons {
     interface IButtonClickedHandler {
     }
 }

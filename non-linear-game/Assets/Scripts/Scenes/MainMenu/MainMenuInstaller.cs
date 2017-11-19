@@ -1,8 +1,6 @@
 ﻿namespace Scenes.MainMenu {
     using System;
 
-    using ButtonClickHandler;
-
     using UnityEngine;
     using UnityEngine.UI;
 

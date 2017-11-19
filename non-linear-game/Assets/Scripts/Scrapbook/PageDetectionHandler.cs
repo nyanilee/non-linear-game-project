@@ -1,7 +1,8 @@
-﻿namespace Handlers.Scrapbook {
+﻿namespace Scrapbook {
     using log4net;
-    using global::Scrapbook;
+
     using Vuforia;
+
     using Zenject;
 
     /// <summary>

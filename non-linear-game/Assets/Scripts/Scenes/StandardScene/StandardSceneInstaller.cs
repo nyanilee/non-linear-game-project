@@ -2,8 +2,6 @@
     using System;
     using System.Reflection;
 
-    using ButtonClickHandler;
-
     using log4net;
 
     using Player;
@@ -47,15 +45,6 @@
 
             [SerializeField]
             private Camera mainCamera;
-
-            [SerializeField]
-            private GameObject playerPrefab;
-
-            public GameObject PlayerPrefab {
-                get {
-                    return this.playerPrefab;
-                }
-            }
 
             internal Button LoadScrapbookSceneButton {
                 get {

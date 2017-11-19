@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    playerPrefab: {fileID: 1118516489851812, guid: dd533b7bf6b9e15469ebbbfaadcc6da1,
+    playerPrefab: {fileID: 1738639160911598, guid: debe4b973d7128b44ace2d458a59e4c3,
       type: 2}

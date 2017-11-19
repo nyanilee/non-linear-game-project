@@ -1,13 +1,8 @@
-﻿namespace ButtonClickHandler {
-    using System;
-    using System.Collections;
-
+﻿namespace Buttons {
     using log4net;
 
     using UniRx;
 
-    using UnityEngine;
-    using UnityEngine.Events;
     using UnityEngine.SceneManagement;
     using UnityEngine.UI;
 
