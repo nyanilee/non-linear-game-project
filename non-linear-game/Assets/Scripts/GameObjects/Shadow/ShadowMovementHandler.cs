@@ -38,6 +38,7 @@
         }
 
         public void OnError(Exception error) {
+            Log.Error("", error);
         }
 
         public void OnNext(Unit value) {
@@ -65,7 +66,7 @@
             this.followingRB.position = Vector3.MoveTowards(
                 this.followingRB.position,
                 worldPoint,
-                5 * Time.deltaTime);
+                10 * Time.deltaTime);
         }
 
         internal class Pool : MemoryPool<Camera, Rigidbody, Rigidbody,

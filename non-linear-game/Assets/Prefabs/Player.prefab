@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentSettings:
-    rigidBody: {fileID: 54718648239857158}
+    rigidbody: {fileID: 54718648239857158}
     transform: {fileID: 4838568145407742}
   movementSettings:
     raycastLayer:

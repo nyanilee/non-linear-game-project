@@ -28,9 +28,9 @@
 
         private PlayerMovementHandler.Pool movementHandlerFactory;
 
-        private PlayerScaleHandler scaleHandler;
+        private GameObjectScaleHandler scaleHandler;
 
-        private PlayerScaleHandler.Pool scaleHandlerFactory;
+        private GameObjectScaleHandler.Pool scaleHandlerFactory;
 
         public Rigidbody Rigidbody {
             get {
@@ -56,7 +56,7 @@
                 //// ReSharper disable ParameterHidesMember
                 Player model,
                 PlayerMovementHandler.Pool movementHandlerFactory,
-                PlayerScaleHandler.Pool scaleHandlerFactory) {
+                GameObjectScaleHandler.Pool scaleHandlerFactory) {
                 //// ReSharper enable ParameterHidesMember
             this.movementHandlerFactory = movementHandlerFactory;
             this.scaleHandlerFactory = scaleHandlerFactory;

@@ -33,16 +33,22 @@
             this.Container.BindInterfacesAndSelfTo<Player>().AsSingle();
             this.Container.Bind<Settings.Movement>()
                 .FromInstance(this.movementSettings);
+            this.Container.Bind<IGameObjectComponentSettings>()
+                .To<Settings.Components>()
+                .FromInstance(this.componentSettings);
             this.Container.Bind<Settings.Components>()
                 .FromInstance(this.componentSettings);
+            this.Container.Bind<IGameObjectScaleSettings>()
+                .To<Settings.Scale>()
+                .FromInstance(this.scaleSettings);
             this.Container.Bind<Settings.Scale>()
                 .FromInstance(this.scaleSettings);
             this.Container
                 .BindMemoryPool<PlayerMovementHandler,
                     PlayerMovementHandler.Pool>();
             this.Container
-                .BindMemoryPool<PlayerScaleHandler,
-                    PlayerScaleHandler.Pool>();
+                .BindMemoryPool<GameObjectScaleHandler,
+                    GameObjectScaleHandler.Pool>();
         }
 
         /// <summary>
@@ -54,32 +60,20 @@
             ///     The components.
             /// </summary>
             [Serializable]
-            internal class Components {
-                /// <summary>
-                ///     The rigid body.
-                /// </summary>
+            internal class Components : IGameObjectComponentSettings {
                 [SerializeField]
-                private Rigidbody rigidBody;
+                private Rigidbody rigidbody;
 
-                /// <summary>
-                ///     The transform.
-                /// </summary>
                 [SerializeField]
                 private Transform transform;
 
-                /// <summary>
-                ///     Gets the rigid body.
-                /// </summary>
-                internal Rigidbody RigidBody {
+                public Rigidbody RigidBody {
                     get {
-                        return this.rigidBody;
+                        return this.rigidbody;
                     }
                 }
 
-                /// <summary>
-                ///     Gets the transform.
-                /// </summary>
-                internal Transform Transform {
+                public Transform Transform {
                     get {
                         return this.transform;
                     }
@@ -120,20 +114,20 @@
             }
 
             [Serializable]
-            internal class Scale {
+            internal class Scale : IGameObjectScaleSettings {
                 [SerializeField]
                 private Vector3ReactiveProperty defaultScale;
 
-                internal Vector3ReactiveProperty DefaultScale {
+                [SerializeField]
+                private FloatReactiveProperty defaultZDistance;
+
+                public Vector3ReactiveProperty DefaultScale {
                     get {
                         return this.defaultScale;
                     }
                 }
 
-                [SerializeField]
-                private FloatReactiveProperty defaultZDistance;
-
-                internal FloatReactiveProperty DefaultZDistance {
+                public FloatReactiveProperty DefaultZDistance {
                     get {
                         return this.defaultZDistance;
                     }

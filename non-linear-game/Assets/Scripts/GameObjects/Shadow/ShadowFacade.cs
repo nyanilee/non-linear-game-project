@@ -2,6 +2,7 @@
     using System;
     using System.Collections.Generic;
 
+    using UniRx;
     using UniRx.Triggers;
 
     using UnityEngine;
@@ -15,10 +16,10 @@
 
         private ShadowMovementHandler.Pool movementHandlerFactory;
 
-        /// <summary>
-        ///     The observers.
-        /// </summary>
-        private LinkedList<IDisposable> observers;
+        private GameObjectScaleHandler scaleHandler;
+
+        private GameObjectScaleHandler.Pool scaleHandlerFactory;
+
 
         /// <summary>
         ///     Prevents a default instance of the
@@ -31,32 +32,38 @@
         internal void Construct(
                 // ReSharper disable ParameterHidesMember
                 Shadow shadow,
-                ShadowMovementHandler.Pool movementHandlerFactory) {
+                ShadowMovementHandler.Pool movementHandlerFactory,
+                GameObjectScaleHandler.Pool scaleHandlerFactory) {
                 // ReSharper restore ParameterHidesMember
-            this.observers = new LinkedList<IDisposable>();
             this.movementHandlerFactory = movementHandlerFactory;
+            this.scaleHandlerFactory = scaleHandlerFactory;
 
             this.model = shadow;
         }
 
         public class Pool : MonoMemoryPool<Camera, Rigidbody, ShadowFacade> {
             protected override void Reinitialize(
-                Camera camera,
-                Rigidbody rb,
-                ShadowFacade item) {
+                    Camera camera,
+                    Rigidbody rb,
+                    ShadowFacade item) {
                 item.movementHandler =
                     item.movementHandlerFactory.Spawn(
                         camera,
                         rb,
                         item.model.Rigidbody);
-                item.observers.AddLast(
+                item.Observers.AddLast(
                     rb.FixedUpdateAsObservable()
                         .Subscribe(item.movementHandler));
+                item.scaleHandler = item.scaleHandlerFactory.Spawn(camera);
+                item.Observers.AddLast(
+                    Observable.EveryUpdate().Subscribe(item.scaleHandler));
             }
 
             protected override void OnDespawned(ShadowFacade item) {
                 item.gameObject.SetActive(false);
                 item.DisposeObservers();
+                item.movementHandlerFactory.Despawn(item.movementHandler);
+                item.scaleHandlerFactory.Despawn(item.scaleHandler);
             }
         }
     }
