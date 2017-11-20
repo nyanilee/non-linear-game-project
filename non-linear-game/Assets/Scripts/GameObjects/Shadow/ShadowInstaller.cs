@@ -106,6 +106,10 @@
 
                 internal FloatReactiveProperty ZFollowDistance {
                     get {
+                        this.xFollowDistance.Value = Mathf.Clamp(
+                            this.xFollowDistance.Value,
+                            float.MinValue,
+                            -0.01f);
                         return this.zFollowDistance;
                     }
                 }
