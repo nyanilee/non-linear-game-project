@@ -1,5 +1,6 @@
 ﻿namespace GameObjects.Shadow {
     using System;
+    using System.Collections.Generic;
 
     using UniRx;
 
@@ -17,6 +18,8 @@
         [SerializeField]
         private Settings.Scale scaleSettings;
 
+        private LinkedList<IDisposable> observers;
+
         /// <summary>
         ///     Prevents a default instance of the
         ///     <see cref="ShadowInstaller" /> class from being created.
@@ -25,6 +28,14 @@
         }
 
         public override void InstallBindings() {
+            this.observers = new LinkedList<IDisposable>();
+            // Set constraints
+            this.observers.AddLast(this.movementSettings.XFollowDistance.Where(x => x > -0.05f).Subscribe(_ =>
+            {
+                this.movementSettings.XFollowDistance.Value = -0.05f;
+            }));
+
+            // Bind
             this.Container.Bind<Shadow>().AsSingle();
             this.Container
                 .BindMemoryPool<ShadowMovementHandler,
@@ -106,10 +117,6 @@
 
                 internal FloatReactiveProperty ZFollowDistance {
                     get {
-                        this.xFollowDistance.Value = Mathf.Clamp(
-                            this.xFollowDistance.Value,
-                            float.MinValue,
-                            -0.01f);
                         return this.zFollowDistance;
                     }
                 }
