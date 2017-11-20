@@ -30,6 +30,8 @@
                 .FromInstance(this.componentSettings.Rigidbody);
             this.Container.Bind<FloatReactiveProperty>().FromInstance(
                 this.movementSettings.XFollowDistance);
+            this.Container.Bind<FloatReactiveProperty>().FromInstance(
+                this.movementSettings.ZFollowDistance);
         }
 
         [Serializable]
@@ -51,9 +53,18 @@
                 [SerializeField]
                 private FloatReactiveProperty xFollowDistance;
 
+                [SerializeField]
+                private FloatReactiveProperty zFollowDistance;
+
                 internal FloatReactiveProperty XFollowDistance {
                     get {
                         return this.xFollowDistance;
+                    }
+                }
+
+                internal FloatReactiveProperty ZFollowDistance {
+                    get {
+                        return this.zFollowDistance;
                     }
                 }
             }

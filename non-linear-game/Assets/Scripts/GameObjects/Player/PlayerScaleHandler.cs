@@ -73,12 +73,15 @@
             /// <summary>
             ///     Re-initializes the handler.
             /// </summary>
+            /// <param name="camera">
+            ///     The camera.
+            /// </param>
             /// <param name="item">
             ///     The handler.
             /// </param>
             protected override void Reinitialize(
-                Camera camera,
-                PlayerScaleHandler item) {
+                    Camera camera,
+                    PlayerScaleHandler item) {
                 item.camera = camera;
             }
         }
