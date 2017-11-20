@@ -1,6 +1,4 @@
-﻿namespace Player {
-    using System;
-
+﻿namespace GameObjects.Player {
     using UniRx;
 
     using UnityEngine;

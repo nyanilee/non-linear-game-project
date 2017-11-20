@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4162414451466928}
   - component: {fileID: 212241015372926476}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: playerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 65022298379510766}
   - component: {fileID: 54718648239857158}
   - component: {fileID: 114360639955525844}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4995194321475154}
   - component: {fileID: 114963675811248044}
-  m_Layer: 2
+  m_Layer: 10
   m_Name: Installer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

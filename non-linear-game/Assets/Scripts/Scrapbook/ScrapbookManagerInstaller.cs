@@ -2,8 +2,6 @@
     using System;
     using System.Diagnostics.CodeAnalysis;
 
-    using Shadow;
-
     using UniRx;
 
     using UnityEngine;

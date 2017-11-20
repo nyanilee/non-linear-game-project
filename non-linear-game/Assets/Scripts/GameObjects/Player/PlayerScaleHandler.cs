@@ -1,11 +1,10 @@
-﻿namespace Player {
+﻿namespace GameObjects.Player {
     using System;
     using System.Reflection;
 
     using log4net;
 
     using UniRx;
-    using UniRx.Triggers;
 
     using UnityEngine;
 

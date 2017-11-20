@@ -4,8 +4,6 @@
 
     using log4net;
 
-    using Player;
-
     using UnityEngine;
     using UnityEngine.UI;
 

@@ -1,4 +1,4 @@
-﻿namespace Player {
+﻿namespace GameObjects.Player {
     using System;
 
     using UniRx;
@@ -30,7 +30,6 @@
         ///     The install bindings.
         /// </summary>
         public override void InstallBindings() {
-            // ReSharper disable StyleCop.SA1110
             this.Container.BindInterfacesAndSelfTo<Player>().AsSingle();
             this.Container.Bind<Settings.Movement>()
                 .FromInstance(this.movementSettings);

@@ -111,3 +111,5 @@ MonoBehaviour:
   settings:
     playerPrefab: {fileID: 1738639160911598, guid: debe4b973d7128b44ace2d458a59e4c3,
       type: 2}
+    shadowPrefab: {fileID: 1475217027830558, guid: 54d2ec6e201ffd64690c17811d5ceb41,
+      type: 2}

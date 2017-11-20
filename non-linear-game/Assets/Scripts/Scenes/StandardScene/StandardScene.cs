@@ -4,9 +4,10 @@
 
     using Buttons;
 
-    using log4net;
+    using GameObjects.Player;
+    using GameObjects.Shadow;
 
-    using Player;
+    using log4net;
 
     using UniRx.Triggers;
 
@@ -34,17 +35,25 @@
 
         private PlayerFacade player;
 
+        private ShadowFacade.Pool shadowFactory;
+
+        private ShadowFacade shadow;
+
         private new Camera camera;
 
         [Inject]
         public void Construct(
+                // ReSharper disable ParameterHidesMember
                 LoadSceneButtonHandler.Pool buttonFactory,
                 Tuple<Button, string> scrapBookButton,
                 PlayerFacade.Pool playerFactory,
+                ShadowFacade.Pool shadowFactory,
                 Camera camera) {
+                // ReSharper restore ParameterHidesMember
             this.loadSceneButtonFactory = buttonFactory;
             this.loadScrapBookSceneButton = scrapBookButton;
             this.playerFactory = playerFactory;
+            this.shadowFactory = shadowFactory;
             this.camera = camera;
         }
 
@@ -53,11 +62,14 @@
                 this.loadScrapBookSceneButton.Item1,
                 this.loadScrapBookSceneButton.Item2);
             this.player = this.playerFactory.Spawn(this.camera);
-            Log.Debug(this.playerFactory.GetHashCode());
+            this.shadow = this.shadowFactory.Spawn(
+                this.camera,
+                this.player.Rigidbody);
         }
 
         private void OnDestroy() {
             this.playerFactory.Despawn(this.player);
+            this.shadowFactory.Despawn(this.shadow);
         }
     }
 }

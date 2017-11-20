@@ -1,24 +1,22 @@
-﻿using Zenject;
-
-namespace Project {
+﻿namespace Project {
     using System;
 
     using Buttons;
+
+    using GameObjects.Player;
+    using GameObjects.Shadow;
 
     using log4net;
 
     using Logging;
 
-    using Player;
-
     using SceneLoadedHandlers;
 
-    using Scrapbook;
-
     using UnityEngine;
-    using UnityEngine.SceneManagement;
 
     using Vuforia;
+
+    using Zenject;
 
     /// <summary>
     /// Represents a dependency injector for this project.
@@ -60,6 +58,9 @@ namespace Project {
             this.Container.BindMemoryPool<PlayerFacade, PlayerFacade.Pool>()
                 .FromSubContainerResolve()
                 .ByNewPrefab(this.settings.PlayerPrefab);
+            this.Container.BindMemoryPool<ShadowFacade, ShadowFacade.Pool>()
+                .FromSubContainerResolve()
+                .ByNewPrefab(this.settings.ShadowPrefab);
             Log.Info("[Success] Project bindings installed");
 /*            ((log4net.Repository.Hierarchy.Logger)log.Logger).Level = log4net.Core.Level.Debug;*/
         }
@@ -72,6 +73,15 @@ namespace Project {
             public GameObject PlayerPrefab {
                 get {
                     return this.playerPrefab;
+                }
+            }
+
+            [SerializeField]
+            private GameObject shadowPrefab;
+
+            public GameObject ShadowPrefab {
+                get {
+                    return this.shadowPrefab;
                 }
             }
         }
