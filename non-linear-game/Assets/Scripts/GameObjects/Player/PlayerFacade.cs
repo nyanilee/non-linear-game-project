@@ -32,6 +32,10 @@
 
         private GameObjectScaleHandler.Pool scaleHandlerFactory;
 
+        private PlayerAnimatorHandler animatorHandler;
+
+        private PlayerAnimatorHandler.Pool animatorHandlerFactory;
+
         public Rigidbody Rigidbody {
             get {
                 return this.model.RigidBody;
@@ -51,15 +55,18 @@
         /// <param name="scaleHandlerFactory">
         ///     The scale Handler Factory.
         /// </param>
+        /// <param name="animatorHandlerFactory"></param>
         [Inject]
-        public void Construct(
+        internal void Construct(
                 //// ReSharper disable ParameterHidesMember
                 Player model,
                 PlayerMovementHandler.Pool movementHandlerFactory,
-                GameObjectScaleHandler.Pool scaleHandlerFactory) {
+                GameObjectScaleHandler.Pool scaleHandlerFactory,
+                PlayerAnimatorHandler.Pool animatorHandlerFactory) {
                 //// ReSharper enable ParameterHidesMember
             this.movementHandlerFactory = movementHandlerFactory;
             this.scaleHandlerFactory = scaleHandlerFactory;
+            this.animatorHandlerFactory = animatorHandlerFactory;
 
             this.model = model;
         }
@@ -70,6 +77,7 @@
                 item.DisposeObservers();
                 item.movementHandlerFactory.Despawn(item.movementHandler);
                 item.scaleHandlerFactory.Despawn(item.scaleHandler);
+                item.animatorHandlerFactory.Despawn(item.animatorHandler);
             }
 
             protected override void Reinitialize(
@@ -78,12 +86,15 @@
                 item.movementHandler =
                     item.movementHandlerFactory.Spawn(camera);
                 item.scaleHandler = item.scaleHandlerFactory.Spawn(camera);
+                item.animatorHandler = item.animatorHandlerFactory.Spawn();
                 item.Observers.AddLast(
-                    Observable.EveryUpdate()
+                    Observable.EveryFixedUpdate()
                         .Where(_ => Input.GetMouseButtonDown(0))
                         .Subscribe(item.movementHandler));
                 item.Observers.AddLast(
                     Observable.EveryUpdate().Subscribe(item.scaleHandler));
+                item.Observers.AddLast(Observable.EveryFixedUpdate().Subscribe(
+                    item.animatorHandler));
             }
         }
     }

@@ -25,6 +25,7 @@
             this.MovementSpeed = movementSettings.Speed;
             this.Transform = componentSettings.Transform;
             this.RigidBody = componentSettings.RigidBody;
+            this.Animator = componentSettings.Animator;
         }
 
         /// <summary>
@@ -41,6 +42,8 @@
         /// Gets the transform.
         /// </summary>
         public Transform Transform { get; }
+
+        public Animator Animator { get; }
 
         /// <summary>
         /// The initialize.

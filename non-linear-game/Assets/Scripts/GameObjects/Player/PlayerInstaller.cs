@@ -34,12 +34,10 @@
             this.Container.Bind<Settings.Movement>()
                 .FromInstance(this.movementSettings);
             this.Container.Bind<IGameObjectComponentSettings>()
-                .To<Settings.Components>()
-                .FromInstance(this.componentSettings);
+                .To<Settings.Components>().FromInstance(this.componentSettings);
             this.Container.Bind<Settings.Components>()
                 .FromInstance(this.componentSettings);
-            this.Container.Bind<IGameObjectScaleSettings>()
-                .To<Settings.Scale>()
+            this.Container.Bind<IGameObjectScaleSettings>().To<Settings.Scale>()
                 .FromInstance(this.scaleSettings);
             this.Container.Bind<Settings.Scale>()
                 .FromInstance(this.scaleSettings);
@@ -49,6 +47,13 @@
             this.Container
                 .BindMemoryPool<GameObjectScaleHandler,
                     GameObjectScaleHandler.Pool>();
+            this.Container
+                .BindMemoryPool<PlayerAnimatorHandler,
+                    PlayerAnimatorHandler.Pool>();
+            this.Container.Bind<Transform>()
+                .FromInstance(this.componentSettings.Transform);
+            this.Container.Bind<Animator>()
+                .FromInstance(this.componentSettings.Animator);
         }
 
         /// <summary>
@@ -66,6 +71,15 @@
 
                 [SerializeField]
                 private Transform transform;
+
+                [SerializeField]
+                private Animator animator;
+
+                public Animator Animator {
+                    get {
+                        return this.animator;
+                    }
+                }
 
                 public Rigidbody RigidBody {
                     get {
