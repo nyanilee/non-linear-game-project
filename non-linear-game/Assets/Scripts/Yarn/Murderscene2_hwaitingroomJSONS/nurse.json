@@ -1,0 +1,12 @@
+[
+	{
+		"title": "nurse",
+		"tags": "",
+		"body": "N: Who are you?\n-> I'm with the police\n\tN: He isn't feeling well enough for an interrogation detective, come back later.\n-> I'm his friend\n\tN: Immediate family only. Come back later.\n-> I'm his brother\n\tN:Can I see ID?\n    <<if $haveID is true>>\n        ->Show ID\n            N:Go on in then.\n            //player should be able to access the husband's room while he is awake\n    <<else>>\n        ->I don't have ID\n            N:I can't let you in without ID.\n    <<endif>>\n\n",
+		"position": {
+			"x": -129,
+			"y": 51
+		},
+		"colorID": 0
+	}
+]

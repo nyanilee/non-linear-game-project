@@ -1,0 +1,12 @@
+[
+	{
+		"title": "detectivestwy",
+		"tags": "",
+		"body": "D: How could someone do this to a lady! The child was found lying beside his mother when police arrived.\n-> Do we know how she died?\n    D: Death resulting from repeated blunt forced trauma to the head. It looks like the killer got her while she was going down the stairs.\n<<if visited(\"pot\") is true>>\n-> It looks like the pot was the murder weapon.\n    D: Maybe he got it from the kitchen, you should look there.\n<<endif>>\n",
+		"position": {
+			"x": 423,
+			"y": 165
+		},
+		"colorID": 0
+	}
+]

@@ -1,0 +1,12 @@
+[
+	{
+		"title": "closet",
+		"tags": "",
+		"body": "Mr.Frog's belongings.\n->Search through coat\n    You find an ID card that does not belong to Mr.Frog, you take it with you.\n    <<set $haveID to true>> //take the ID card\n->Search through wallet\n    You find Mr.Frog's ID and some coins.",
+		"position": {
+			"x": -129,
+			"y": 51
+		},
+		"colorID": 0
+	}
+]

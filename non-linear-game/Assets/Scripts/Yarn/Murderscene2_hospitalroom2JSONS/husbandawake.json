@@ -1,0 +1,12 @@
+[
+	{
+		"title": "husbandawake",
+		"tags": "",
+		"body": "Mr.Frog: Oh hello?\n->Hi Mr.Frog, I'm a detective, can you tell me about what happened?\n    Mr.Frog: I was already in bed when I woke up from the sound of someone breaking a window in the house, I went downstairs to look and tried to get to the kitchen for something to protect myself in case it was a burglar, but the killer was already there. He hit me over the head and I just blacked out. When I woke up, I saw him rummaging through the pantry. I think he saw me wake up and he just walked out like it was no big deal...\n    <<set $talked_to_husband to true>> //pantry now has more dialogue\n->I'm sorry about Mrs. Frog.\n    Mr.Frog: My poor wifey...!\n->Why do you have your brother's ID on you?\n    Mr.Frog: U-um, he forgot it at my house and I w-was going to return it to him soon!\n<<if $solvednote is true>>\n->Does this note mean anything to you?\n    Mr.Frog: S-sometimes we don't have enough money to put food on the table, and Frog Jr. has to go without lunch...",
+		"position": {
+			"x": -129,
+			"y": 51
+		},
+		"colorID": 0
+	}
+]

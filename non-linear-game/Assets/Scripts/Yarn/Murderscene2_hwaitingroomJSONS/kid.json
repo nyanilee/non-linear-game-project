@@ -1,0 +1,12 @@
+[
+	{
+		"title": "kid",
+		"tags": "",
+		"body": "//<<set $kid_likes to false>> booleans are false by default\r\n//<<set $kid_neutral to false>>\r\n    Kid: ...\r\n    -> Ask about case\r\n        <<if $kid_likes is false or $kid_neutral is false>>\r\n        Kid: ...\r\n        <<elseif $kid_neutral is true>>\r\n        Kid: I think I have something for you.. but I don't know if I should trust you with it...\r\n        <<else>> //he likes you\r\n        Kid: Here I have this note for you.\r\n        <<endif>>\r\n    -> I like your shirt\r\n        Kid: Captain Nope is the best hero ever! Do you know him?\r\n        -> Yeah! I like him too!\r\n            Kid: Really!? No way! What was your favourite episode?\r\n            -> Captain Nope versus Yesman!\r\n                Kid: ME TOO!\r\n                <<set $kid_likes to true>>\r\n            -> When Captain Nope saved the whole school bus full of kids!\r\n                Kid: Ohh that was a cool episode too, not my favourite though..\r\n                <<set $kid_neutral to true>>\r\n            -> When Captain Nope married Captain Maybe and changed his surname to Captain Maybe!\r\n                Kid: What... ew...\r\n                <<set $kid_likes to false>>\r\n        -> Nope, can you tell me about him?\r\n            Kid: He is soooooooo awesome, he fought Yesman in last week's episode and destroyed him!\r\n            <<set $kid_neutral to true>>\r\n",
+		"position": {
+			"x": -126,
+			"y": 50
+		},
+		"colorID": 0
+	}
+]
