@@ -67,6 +67,12 @@
             this.defaultDialogueUi = defaultDialogueUi;
         }
 
+        public Vector3 PlayerPosition {
+            get {
+                return this.player.Position;
+            }
+        }
+
         private void Start() {
             this.loadSceneButtonFactory.Spawn(
                 this.loadScrapBookSceneButton.Item1,

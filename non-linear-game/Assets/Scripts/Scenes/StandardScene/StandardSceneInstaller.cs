@@ -34,6 +34,8 @@
                     this.settings.ScrapbookSceneName));
             this.Container.Bind<Camera>()
                 .FromInstance(this.settings.MainCamera);
+            this.Container.Bind<StandardScene>()
+                .FromInstance(this.settings.StandardScene);
         }
 
         [Serializable]
@@ -46,6 +48,9 @@
 
             [SerializeField]
             private Camera mainCamera;
+
+            [SerializeField]
+            private StandardScene standardScene;
 
             internal Button LoadScrapbookSceneButton {
                 get {
@@ -62,6 +67,12 @@
             internal Camera MainCamera {
                 get {
                     return this.mainCamera;
+                }
+            }
+
+            internal StandardScene StandardScene {
+                get {
+                    return this.standardScene;
                 }
             }
         }

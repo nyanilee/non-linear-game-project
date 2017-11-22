@@ -7,6 +7,8 @@
 
     using log4net;
 
+    using Scenes.StandardScene;
+
     using UniRx;
     using UniRx.Triggers;
 
@@ -44,11 +46,22 @@
         [SerializeField]
         private string dialogueName;
 
+        private StandardScene standardScene;
+
         private DialogueManager dialogueManager;
 
+        private Camera camera;
+
         [Inject]
-        public void Construct(DialogueManager dialogueManager) {
+        public void Construct(
+                // ReSharper disable ParameterHidesMember
+                DialogueManager dialogueManager,
+                StandardScene standardScene,
+                Camera camera) {
+                // ReSharper restore ParameterHidesMember
             this.dialogueManager = dialogueManager;
+            this.standardScene = standardScene;
+            this.camera = camera;
         }
 
         /// <inheritdoc />
@@ -87,10 +100,36 @@
                             "Deactivated \"{0}\" sprite renderer\nGameobject: {0}",
                             this.spriteRenderer.name);
                     }));
+
             this.collider.OnMouseDownAsObservable().Subscribe(
                 _ => {
+                    var propLocation =
+                        this.camera.WorldToScreenPoint(this.transform.position);
+                    propLocation.y = 0;
+                    propLocation.z = 0;
+                    var playerLocation =
+                        this.camera.WorldToScreenPoint(
+                            this.standardScene.PlayerPosition);
+                    playerLocation.y = 0;
+                    playerLocation.z = 0;
+
+                    if (Vector3.Distance(propLocation, playerLocation)
+                            > this.spriteRenderer.sprite.bounds.size.x
+                            * this.spriteRenderer.sprite.pixelsPerUnit
+                            / 2) {
+                        return;
+                    }
+#if DEBUG
+                    if (this.dialogueName == string.Empty) {
+                        Log.WarnFormat(
+                            "{0} does not have a dialogue name",
+                            this.transform.gameObject.name);
+                        return;
+                    }
+#endif
                     this.dialogueManager.StartDialogue(this.dialogueName);
-                    Log.InfoFormat("Start dialogue with name \"{0}\"",
+                    Log.InfoFormat(
+                        "Start dialogue with name \"{0}\"",
                         this.dialogueName);
                 });
         }

@@ -3,6 +3,8 @@
 
     using Buttons;
 
+    using Dialogue;
+
     using GameObjects.Player;
     using GameObjects.Shadow;
 
@@ -15,6 +17,8 @@
     using UnityEngine;
 
     using Vuforia;
+
+    using Yarn;
 
     using Zenject;
 
@@ -61,6 +65,8 @@
             this.Container.BindMemoryPool<ShadowFacade, ShadowFacade.Pool>()
                 .FromSubContainerResolve()
                 .ByNewPrefab(this.settings.ShadowPrefab);
+            this.Container.Bind<VariableStorage>().To<DefaultVariableStorage>()
+                .AsSingle();
             Log.Info("[Success] Project bindings installed");
 /*            ((log4net.Repository.Hierarchy.Logger)log.Logger).Level = log4net.Core.Level.Debug;*/
         }
