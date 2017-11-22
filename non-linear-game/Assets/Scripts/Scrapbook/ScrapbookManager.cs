@@ -7,9 +7,7 @@
     using System.Linq;
     using System.Xml;
 
-    using ButtonClickHandler;
-
-    using Handlers.Scrapbook;
+    using Buttons;
 
     using log4net;
 
@@ -177,36 +175,5 @@
                 this.disposableActionListeners.RemoveLast();
             }
         }
-
-        /// <summary>
-        /// The settings for this class.
-        /// </summary>
-        [Serializable]
-        internal class Settings {
-            /// <summary>
-            /// The database name.
-            /// </summary>
-            [SerializeField]
-            private StringReactiveProperty databaseName;
-
-            [SerializeField]
-            private Button loadSceneButton;
-
-            /// <summary>
-            /// Gets the name of the database.
-            /// </summary>
-            internal StringReactiveProperty DatabaseName {
-                get {
-                    return this.databaseName;
-                }
-            }
-
-            internal Button LoadSceneButton {
-                get {
-                    return this.loadSceneButton;
-                }
-            }
-        }
-
     }
 }

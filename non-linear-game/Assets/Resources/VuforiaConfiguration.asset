@@ -44,9 +44,9 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
-    - derp
+    - scenes
     dataSetsToActivate:
-    - derp
+    - scenes
   videoBackground:
     clippingMode: 0
     numDivisions: 2

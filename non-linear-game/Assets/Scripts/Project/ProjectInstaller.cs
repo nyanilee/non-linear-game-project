@@ -1,9 +1,10 @@
-﻿using Zenject;
-
-namespace Project {
+﻿namespace Project {
     using System;
 
-    using ButtonClickHandler;
+    using Buttons;
+
+    using GameObjects.Player;
+    using GameObjects.Shadow;
 
     using log4net;
 
@@ -11,11 +12,11 @@ namespace Project {
 
     using SceneLoadedHandlers;
 
-    using Scrapbook;
-
-    using UnityEngine.SceneManagement;
+    using UnityEngine;
 
     using Vuforia;
+
+    using Zenject;
 
     /// <summary>
     /// Represents a dependency injector for this project.
@@ -26,6 +27,9 @@ namespace Project {
         /// </summary>
         private static readonly ILog Log = log4net.LogManager.GetLogger(
             System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        [SerializeField]
+        private Settings settings;
 
         /// <summary>
         /// Installs the bindings for this project.
@@ -51,8 +55,35 @@ namespace Project {
                 .BindMemoryPool<LoadSceneButtonHandler,
                     // ReSharper disable once StyleCop.SA1110
                     LoadSceneButtonHandler.Pool>();
+            this.Container.BindMemoryPool<PlayerFacade, PlayerFacade.Pool>()
+                .FromSubContainerResolve()
+                .ByNewPrefab(this.settings.PlayerPrefab);
+            this.Container.BindMemoryPool<ShadowFacade, ShadowFacade.Pool>()
+                .FromSubContainerResolve()
+                .ByNewPrefab(this.settings.ShadowPrefab);
             Log.Info("[Success] Project bindings installed");
 /*            ((log4net.Repository.Hierarchy.Logger)log.Logger).Level = log4net.Core.Level.Debug;*/
         }
-   }
+
+        [Serializable]
+        public class Settings {
+            [SerializeField]
+            private GameObject playerPrefab;
+
+            public GameObject PlayerPrefab {
+                get {
+                    return this.playerPrefab;
+                }
+            }
+
+            [SerializeField]
+            private GameObject shadowPrefab;
+
+            public GameObject ShadowPrefab {
+                get {
+                    return this.shadowPrefab;
+                }
+            }
+        }
+    }
 }

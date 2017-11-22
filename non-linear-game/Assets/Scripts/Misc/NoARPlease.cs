@@ -7,19 +7,24 @@ public class NoARPlease : MonoBehaviour {
     private CameraClearFlags cameraClearFlags;
 
     // Use this for initialization
-    void Start() {
-
-        Camera mainCamera = Camera.main;
+    private void Start() {
+        var mainCamera = Camera.main;
         if (mainCamera) {
             if (mainCamera.GetComponent<VuforiaBehaviour>() != null) {
                 mainCamera.GetComponent<VuforiaBehaviour>().enabled = false;
             }
+
             if (mainCamera.GetComponent<VideoBackgroundBehaviour>() != null) {
-                mainCamera.GetComponent<VideoBackgroundBehaviour>().enabled = false;
+                mainCamera.GetComponent<VideoBackgroundBehaviour>().enabled =
+                    false;
             }
-            if (mainCamera.GetComponent<DefaultInitializationErrorHandler>() != null) {
-                mainCamera.GetComponent<DefaultInitializationErrorHandler>().enabled = false;
+
+            if (mainCamera.GetComponent<DefaultInitializationErrorHandler>()
+                != null) {
+                mainCamera.GetComponent<DefaultInitializationErrorHandler>()
+                    .enabled = false;
             }
+
             mainCamera.clearFlags = this.cameraClearFlags;
         }
     }

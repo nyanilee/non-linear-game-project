@@ -108,3 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98570fe1e7a2ee4fb1c07f55b3a85a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings:
+    playerPrefab: {fileID: 1692334348227030, guid: 2501d97305f498348afd1a4846dbe186,
+      type: 2}
+    shadowPrefab: {fileID: 1475217027830558, guid: 54d2ec6e201ffd64690c17811d5ceb41,
+      type: 2}

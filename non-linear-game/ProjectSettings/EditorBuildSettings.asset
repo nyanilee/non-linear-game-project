@@ -9,17 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 33d181abc5ed3ab48872662923db1656
   - enabled: 1
-    path: Assets/Scenes/friends.unity
-    guid: 266c0cf25ac313740be80c6704c4d925
-  - enabled: 1
-    path: Assets/Scenes/fuckrazer.unity
-    guid: e67ef563f0fbedd4ea38013e16992518
-  - enabled: 1
-    path: Assets/Scenes/main.unity
-    guid: 331ec628ffa053448af66dbca0f78386
-  - enabled: 1
-    path: Assets/Scenes/movement.unity
+    path: Assets/Scenes/jesus.unity
     guid: cc49c321150feaa4ca3605f6ce82faea
+  - enabled: 1
+    path: Assets/Scenes/ladybug.unity
+    guid: df05825d0ae8c7947b34dbc090a8a08e
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: c81829b2ff37c5a47ab96c0915204e04

@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4804287169609528}
   - component: {fileID: 114834655196842802}
+  - component: {fileID: 114964532109514968}
   m_Layer: 0
   m_Name: StandardSceneContext
   m_TagString: Untagged
@@ -81,6 +82,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82b273339528d478b02a5683c085c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings:
+    loadScrapbookSceneButton: {fileID: 0}
+    scrapbookSceneName: vuforia
+    mainCamera: {fileID: 0}
 --- !u!114 &114834655196842802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,3 +106,14 @@ MonoBehaviour:
   _contractNames: []
   _parentContractName: 
   _parentContractNames: []
+--- !u!114 &114964532109514968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843848594794432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0071aa55c77354da5e30a6fd22f4ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

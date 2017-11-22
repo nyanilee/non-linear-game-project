@@ -1,0 +1,12 @@
+[
+	{
+		"title": "Sally",
+		"tags": "",
+		"body": "<<if visited(\"Sally\") is false>>\n    Player: Hey, Sally.\n    Sally: Oh! Hi.\n    Sally: You snuck up on me.\n    Sally: Don't do that.\n<<else>>\n    Player: Hey.\n    Sally: Hi.\n<<endif>>\n",
+		"position": {
+			"x": 525,
+			"y": 111
+		},
+		"colorID": 0
+	}
+]
