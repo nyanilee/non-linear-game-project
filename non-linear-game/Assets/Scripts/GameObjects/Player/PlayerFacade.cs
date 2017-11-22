@@ -42,6 +42,12 @@
             }
         }
 
+        public Vector3 Position {
+            get {
+                return this.model.Transform.position;
+            }
+        }
+
         /// <summary>
         ///     Initializes an instance of the
         ///     <see cref="PlayerFacade" /> class.

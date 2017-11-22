@@ -24,8 +24,6 @@
             // Manager Settings
             this.Container.Bind<TextAsset[]>()
                 .FromInstance(this.settings.SourceText);
-            this.Container.Bind<VariableStorageBehaviour>()
-                .FromInstance(this.settings.VariableStorage);
 
             // Ui Settings
             this.Container.Bind<GameObject>()
@@ -58,18 +56,9 @@
             [SerializeField]
             private TextAsset[] sourceText;
 
-            [SerializeField]
-            private VariableStorageBehaviour variableStorage;
-
             internal TextAsset[] SourceText {
                 get {
                     return this.sourceText;
-                }
-            }
-
-            internal VariableStorageBehaviour VariableStorage {
-                get {
-                    return this.variableStorage;
                 }
             }
 

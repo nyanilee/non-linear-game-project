@@ -598,7 +598,6 @@ MonoBehaviour:
   settings:
     sourceText:
     - {fileID: 4900000, guid: 8c99cdbd78d5dea49bc905a2c1e5dd30, type: 3}
-    variableStorage: {fileID: 537982567}
   uiSettings:
     dialogueContainer: {fileID: 232108108}
     lineText: {fileID: 1751789290}
@@ -688,6 +687,11 @@ Prefab:
       propertyPath: _installers.Array.data[0]
       value: 
       objectReference: {fileID: 265164943}
+    - target: {fileID: 114328339361231636, guid: 5ed3d4965cd925d40ae0882ce4637e91,
+        type: 2}
+      propertyPath: settings.standardScene
+      value: 
+      objectReference: {fileID: 1124612291}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ed3d4965cd925d40ae0882ce4637e91, type: 2}
   m_IsPrefabParent: 0
@@ -696,6 +700,12 @@ Camera:
   m_PrefabParentObject: {fileID: 20807118803408748, guid: 6ab72759522a7a04aac50975d44825a8,
     type: 2}
   m_PrefabInternal: {fileID: 1774777658}
+--- !u!114 &1124612291 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114964532109514968, guid: 5ed3d4965cd925d40ae0882ce4637e91,
+    type: 2}
+  m_PrefabInternal: {fileID: 840518710}
+  m_Script: {fileID: 11500000, guid: ca0071aa55c77354da5e30a6fd22f4ff, type: 3}
 --- !u!1 &1212328063
 GameObject:
   m_ObjectHideFlags: 0
