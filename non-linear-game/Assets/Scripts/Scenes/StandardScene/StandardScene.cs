@@ -4,6 +4,8 @@
 
     using Buttons;
 
+    using Dialogue;
+
     using GameObjects.Player;
     using GameObjects.Shadow;
 
@@ -41,6 +43,10 @@
 
         private new Camera camera;
 
+        private DialogueManager dialogueManager;
+
+        private DefaultDialogueUi defaultDialogueUi;
+
         [Inject]
         public void Construct(
                 // ReSharper disable ParameterHidesMember
@@ -48,13 +54,17 @@
                 Tuple<Button, string> scrapBookButton,
                 PlayerFacade.Pool playerFactory,
                 ShadowFacade.Pool shadowFactory,
-                Camera camera) {
+                Camera camera,
+                DialogueManager dialogueManager,
+                DefaultDialogueUi defaultDialogueUi) {
                 // ReSharper restore ParameterHidesMember
             this.loadSceneButtonFactory = buttonFactory;
             this.loadScrapBookSceneButton = scrapBookButton;
             this.playerFactory = playerFactory;
             this.shadowFactory = shadowFactory;
             this.camera = camera;
+            this.dialogueManager = dialogueManager;
+            this.defaultDialogueUi = defaultDialogueUi;
         }
 
         private void Start() {
