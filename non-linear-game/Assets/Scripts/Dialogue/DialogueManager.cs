@@ -49,14 +49,14 @@
         [Inject]
         public DialogueManager(
                 TextAsset[] sourceText,
-                VariableStorageBehaviour vsBehaviour,
+                VariableStorage vsBehaviour,
                 StartDialogueSignal startDialogueSignal,
                 RunDialogueSignal runDialogueSignal,
                 PrintLineSignal printLineSignal,
                 NextSignal nextSignal,
                 StopDialogueSignal stopDialogueSignal,
                 FinishDialogueSignal finishDialogueSignal) {
-            this.dialogue = new Yarn.Dialogue(vsBehaviour);
+            this.dialogue = new Dialogue(vsBehaviour);
             this.sourceText = sourceText;
             this.startDialogueSignal = startDialogueSignal;
             this.runDialogueSignal = runDialogueSignal;
