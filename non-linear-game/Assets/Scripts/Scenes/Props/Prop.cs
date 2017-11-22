@@ -3,12 +3,16 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Dialogue;
+
     using log4net;
 
     using UniRx;
     using UniRx.Triggers;
 
     using UnityEngine;
+
+    using Zenject;
 
     /// <summary>
     ///     Represents a prop
@@ -37,17 +41,22 @@
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 
-        /// <summary>
-        ///     Finalizes an instance of the <see cref="Prop"/> class.
-        /// </summary>
-        ~Prop() {
-            this.Dispose(false);
+        [SerializeField]
+        private string dialogueName;
+
+        private DialogueManager dialogueManager;
+
+        [Inject]
+        public void Construct(DialogueManager dialogueManager) {
+            this.dialogueManager = dialogueManager;
         }
 
         /// <inheritdoc />
         public void Dispose() {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
+            while (this.observers.Any()) {
+                this.observers.Last.Value.Dispose();
+                this.observers.RemoveLast();
+            }
         }
 
         /// <summary>
@@ -55,18 +64,6 @@
         /// </summary>
         protected void Awake() {
             this.observers = new LinkedList<IDisposable>();
-        }
-
-        /// <summary>
-        ///     Performs application-defined tasks associated with freeing,
-        ///     releasing, or resetting unmanaged resources.
-        /// </summary>
-        /// <param name="isDisposing">
-        ///     Specifies whether this is being called by the
-        ///      <see cref="Dispose"/> method.
-        /// </param>
-        protected virtual void Dispose(bool isDisposing) {
-            this.ReleaseUnmanagedResources();
         }
 
         /// <summary>
@@ -90,20 +87,12 @@
                             "Deactivated \"{0}\" sprite renderer\nGameobject: {0}",
                             this.spriteRenderer.name);
                     }));
-        }
-
-        /// <summary>
-        ///     Releases unmanaged resources.
-        /// </summary>
-        private void ReleaseUnmanagedResources() {
-            while (this.observers.Any()) {
-                this.observers.Last.Value.Dispose();
-                this.observers.RemoveLast();
-            }
-
-            this.observers = null;
-            this.spriteRenderer = null;
-            this.collider = null;
+            this.collider.OnMouseDownAsObservable().Subscribe(
+                _ => {
+                    this.dialogueManager.StartDialogue(this.dialogueName);
+                    Log.InfoFormat("Start dialogue with name \"{0}\"",
+                        this.dialogueName);
+                });
         }
     }
 }

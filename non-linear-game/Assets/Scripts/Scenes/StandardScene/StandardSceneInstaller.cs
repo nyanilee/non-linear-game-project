@@ -2,6 +2,8 @@
     using System;
     using System.Reflection;
 
+    using Dialogue;
+
     using log4net;
 
     using UnityEngine;
@@ -21,6 +23,7 @@
 
         [SerializeField]
         private Settings settings;
+
         /// <summary>
         ///     Installs the bindings for this scene.
         /// </summary>
